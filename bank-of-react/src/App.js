@@ -7,6 +7,8 @@ import Home from './components/Home';
 import UserProfile from './components/UserProfile';
 import LogIn from './components/Login';
 import AccountBalance from './components/AccountBalance';
+import Credits from './components/Credits'
+import Debits from './components/Debits'
 
 
 class App extends Component {
@@ -18,8 +20,8 @@ class App extends Component {
         userName: 'Joe Smith',
         memberSince: '11/22/99',
       },
-      creidts: [],
-      debits: []
+      credits: [0, 2, 4, 6],
+      debits: [0]
     };
   }
   async componentCreditDidMount() {
@@ -90,6 +92,9 @@ class App extends Component {
         <Route exact path="/userProfile" element={<UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince} />} />
         <Route exact path="/login" element={<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />} />
         <Route exact path="/balance" element={<AccountBalance accountBalance={this.state.accountBalance} />} />
+        <Route exact path="/credits" element={<Credits credits={this.state.credits} />} />
+        <Route exact path="/debits" element={<Debits debits={this.state.credits} />} />
+
       </Routes>
     );
   }
