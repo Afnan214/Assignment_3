@@ -1,5 +1,6 @@
 import { Component } from "react";
 import React from "react";
+import { Link } from "react-router-dom";
 class UserProfile extends Component {
     render() {
         return (
@@ -7,6 +8,7 @@ class UserProfile extends Component {
                 <h1>User Profile</h1>
                 <div>Username: {this.props.userName}</div>
                 <div>Member Since: {this.props.memberSince}</div>
+                <Link to="/">Return to Home</Link>
             </div>
         )
     }
