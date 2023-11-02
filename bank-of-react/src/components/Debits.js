@@ -19,7 +19,7 @@ class Debits extends Component {
     handleAmount = (e) => {
         const updated = { ...this.state }
         updated.amount = e.target.value;
-        this.setState({ amount: updated.amount })
+        this.setState({ amount: Number(updated.amount) })
 
     }
     handleDescriptionChange = (e) => {

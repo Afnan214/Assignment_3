@@ -55,6 +55,7 @@ export default function App() {
         var totalCredits = 0;
         credits.forEach(credit => {
           totalCredits += credit.amount
+          console.log(credit.amount)
         });
         return totalCredits
       }
@@ -65,7 +66,7 @@ export default function App() {
         });
         return totalDebits
       }
-      const accountBalance = totalCredits() - totalDebits()
+      const accountBalance = (totalCredits() - totalDebits()).toFixed(2)
       setAccountBalance(accountBalance)
     }
     updateBalance()
