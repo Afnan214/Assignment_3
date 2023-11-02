@@ -1,5 +1,6 @@
 import { Component } from "react";
 import React from "react";
+import { Link } from 'react-router-dom';
 import "./Credits.css"
 class Credits extends Component {
     constructor() {
@@ -76,6 +77,7 @@ class Credits extends Component {
                         <button>Add Credit</button>
                     </form>
                 </div>
+                <Link to="/">Return Home</Link>
             </>
         )
     }

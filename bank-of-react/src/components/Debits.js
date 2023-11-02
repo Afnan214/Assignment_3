@@ -1,6 +1,6 @@
 import { Component } from "react";
 import React from "react";
-
+import { Link } from 'react-router-dom';
 class Debits extends Component {
     constructor() {
         super();
@@ -76,6 +76,7 @@ class Debits extends Component {
                         <button>Add Debit</button>
                     </form>
                 </div>
+                <Link to="/">Return Home</Link>
             </>
         )
     }
