@@ -12,18 +12,6 @@ import Debits from './components/Debits'
 
 
 export default function App() {
-  // constructor() {  // Create and initialize state
-  //   super();
-  //   this.state = {
-  //     accountBalance: 1234567.89,
-  //     currentUser: {
-  //       userName: 'Joe Smith',
-  //       memberSince: '11/22/99',
-  //     },
-  //     credits: [],
-  //     debits: []
-  //   };
-  // }
   const [accountBalance, setAccountBalance] = useState(1234567.89)
   const [currentUser, setCurrentUser] = useState({ username: 'Joe Smith', memberSince: '11/22/99' })
   const [credits, setCredits] = useState([])
@@ -34,7 +22,7 @@ export default function App() {
       try {
         let response = await axios.get(CreditLink)
         console.log(response.data);
-        addCredit(response.data)
+        setCredits(response.data)
       }
       catch (error) {
         if (error.response) {
@@ -48,7 +36,7 @@ export default function App() {
       try {
         let response = await axios.get(debitLink)
         console.log(response.data);
-        addDebit(response.data)
+        setDebits(response.data)
       }
       catch (error) {
         if (error.response) {
@@ -66,14 +54,14 @@ export default function App() {
       function totalCredits() {
         var totalCredits = 0;
         credits.forEach(credit => {
-          totalCredits += credit
+          totalCredits += credit.amount
         });
         return totalCredits
       }
       function totalDebits() {
         var totalDebits = 1;
         debits.forEach(debit => {
-          totalDebits += debit
+          totalDebits += debit.amount
         });
         return totalDebits
       }
@@ -88,7 +76,10 @@ export default function App() {
     setCurrentUser({ newUser })
   }
   const addCredit = (input) => {
-    setCredits(input)
+    const newCredits = [...credits]
+    newCredits.push(input)
+    console.log(input)
+    setCredits(newCredits)
   }
   const addDebit = (input) => {
     setDebits(input)
@@ -103,8 +94,8 @@ export default function App() {
       <Route exact path="/userProfile" element={<UserProfile userName={currentUser.userName} memberSince={currentUser.memberSince} />} />
       <Route exact path="/login" element={<LogIn user={currentUser} mockLogIn={mockLogIn} />} />
       <Route exact path="/balance" element={<AccountBalance accountBalance={accountBalance} />} />
-      <Route exact path="/credits" element={<Credits credits={credits} />} />
-      <Route exact path="/debits" element={<Debits debits={debits} />} />
+      <Route exact path="/credits" element={<Credits credits={credits} addCredit={addCredit} accountBalance={accountBalance} />} />
+      <Route exact path="/debits" element={<Debits debits={debits} addDebit={addDebit} accountBalance={accountBalance} />} />
     </Routes>
   );
 }
