@@ -59,7 +59,7 @@ export default function App() {
         return totalCredits
       }
       function totalDebits() {
-        var totalDebits = 1;
+        var totalDebits = 0;
         debits.forEach(debit => {
           totalDebits += debit.amount
         });
@@ -70,7 +70,7 @@ export default function App() {
     }
     updateBalance()
   }, [credits, debits])
-  const mockLogIn = (logInInfo) => {  // Update state's currentUser (userName) after "Log In" button is clicked
+  const mockLogIn = (logInInfo) => {
     const newUser = { ...this.state.currentUser };
     newUser.userName = logInInfo.userName;
     setCurrentUser({ newUser })
@@ -82,12 +82,13 @@ export default function App() {
     setCredits(newCredits)
   }
   const addDebit = (input) => {
-    setDebits(input)
+    const newDebits = [...debits]
+    newDebits.push(input)
+    console.log(input)
+    setCredits(newDebits)
   }
 
-  // const run = () => {
 
-  // }
   return (
     <Routes>
       <Route exact path="/" element={<Home accountBalance={accountBalance} />} />
