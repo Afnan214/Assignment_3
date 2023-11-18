@@ -91,7 +91,7 @@ export default function App() {
 
 
   return (
-    <Routes>
+    <Routes >
       <Route exact path="/" element={<Home accountBalance={accountBalance} />} />
       <Route exact path="/userProfile" element={<UserProfile userName={currentUser.userName} memberSince={currentUser.memberSince} />} />
       <Route exact path="/login" element={<LogIn user={currentUser} mockLogIn={mockLogIn} />} />

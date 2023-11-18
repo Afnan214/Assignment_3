@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './src/';
-import App from './src/App';
-import reportWebVitals from './src/reportWebVitals';
+import '.';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='/Assignment_3'>
       <App />
     </BrowserRouter>
   </React.StrictMode>
